@@ -6,33 +6,26 @@ const app = express();
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.use('/public', express.static(path.join(__dirname, 'public')))
+app.set('views', path.join(__dirname, 'views'));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}))
-
-var tarefas = ['Escreva Tarefas'];
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.render('index', { tarefasList: tarefas })
-})
+    res.render('index', { pesoFinal: undefined });
+});
 
 app.post('/', (req, res) => {
-    tarefas.push(req.body.tarefa);
-    res.render('index', { tarefasList: tarefas })
-})
+    const peso = parseFloat(req.body.peso);
+    const altura = parseFloat(req.body.altura);
 
-app.get('/deletar/:id', (req, res) => {
-    tarefas = tarefas.filter((val, index) => {
-        if (index != req.params.id) {
-            return val;
-        }
-    })
-    res.render('index', { tarefasList: tarefas })
-})
+    if (!isNaN(peso) && !isNaN(altura) && altura > 0) {
+        const imc = (peso / (altura * altura)).toFixed(2);
+        res.render('index', { pesoFinal: imc });
+    } else {
+        res.render('index', { pesoFinal: 'Entrada inválida' });
+    }
+});
 
-app.listen(5000, () => {
-    console.log('Servidor rodando...')
-})
+app.listen(5000, () => console.log('Rodando na Porta 5000...'));

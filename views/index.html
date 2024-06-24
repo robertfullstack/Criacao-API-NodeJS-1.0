@@ -5,22 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../public/style.css">
 </head>
 
 <body>
-    <form method="POST">
-        <input type="text" name="tarefa" id="" placeholder="Acordar as 8hrs...">
-        <button type="submit">Inserir</button>
-    </form>
-    <div class="tarefas">
-        <% for (let i=0; i<tarefasList.length;i++) { %>
-            <p>
-                <%=tarefasList[i]%> | <a href="/deletar/<%=i%>">X</a>
-            </p>
+    <h1>Ola</h1>
 
-            <% } %>
-    </div>
+    <form method="POST">
+        <label for="">Altura:</label>
+        <input type="text" name="altura" id="">
+        <label for="">Peso:</label>
+        <input type="text" name="peso" id="">
+
+        <button type="submit">CALCULAR IMC</button>
+    </form>
+    <% if (typeof pesoFinal !=='undefined' ) { %>
+        <h3>Seu IMC é <%= pesoFinal %>
+        </h3>
+        <% } %>
 </body>
 
 </html>
