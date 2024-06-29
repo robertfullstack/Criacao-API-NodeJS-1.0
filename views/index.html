@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -8,20 +8,20 @@
 </head>
 
 <body>
-    <h1>Ola</h1>
+    <h1>Olá mundo!</h1>
 
-    <form method="POST">
-        <label for="">Altura:</label>
-        <input type="text" name="altura" id="">
-        <label for="">Peso:</label>
-        <input type="text" name="peso" id="">
 
-        <button type="submit">CALCULAR IMC</button>
-    </form>
-    <% if (typeof pesoFinal !=='undefined' ) { %>
-        <h3>Seu IMC é <%= pesoFinal %>
-        </h3>
+    <% for (let i=0; i < tarefasList.length; i++) { %>
+        <p>
+            <%= tarefasList[i] %>
+        </p>
         <% } %>
+''
+            <form method="post" action="/enviarInfo">
+                <label for="name">Nome</label>
+                <input type="text" name="name" id="name">
+                <button type="submit">Enviar Info</button>
+            </form>
 </body>
 
 </html>
