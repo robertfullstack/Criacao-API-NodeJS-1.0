@@ -49,7 +49,7 @@ app.post("/", async (req, res) => {
 });
 
 app.listen(port, () => {
-    mongoose.connect(process.env.MONGODB_URI)
+    mongoose.connect("mongodb+srv://robertinfinity10:8$jqbzfAxHE_!5X@starwars.bjv7dvt.mongodb.net/?retryWrites=true&w=majority&appName=starwars")
         .then(() => {
             console.log(`Conectado ao MongoDB e rodando na porta ${port}!`);
         })
